@@ -69,13 +69,14 @@ class UserController extends Controller
             'users' => $users,
         ];
         
-
         $permissions=Permission::all();
+
+        $userp=$user->with('permissions')->where('id',$user->id)->first();
         
         return view('users.edit',[
             'user'=>$user,
             'permissions'=>$permissions,
-            'userPermissions'=>$user->getPermissions(),
+            'userPermissions'=>$userp->permissions,
             'userRoles'=>$user->roles,
             'roles'=>Role::all(),
         ]);
@@ -114,6 +115,6 @@ class UserController extends Controller
            else{
             $user->syncRoles([]);
            }
-           return redirect('/users')->with('message','users has been updated');
+           return redirect('/users')->with('message','user has been updated');
        }
 }

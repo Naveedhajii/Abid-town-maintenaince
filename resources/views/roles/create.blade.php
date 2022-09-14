@@ -7,8 +7,8 @@
 <form method="POST" action="{{route('roles.store')}}">
     @csrf
 
-    <div style="gap:20px; display:flex;">
-        <div class="mb-3">
+    <div style="gap:20px; display:flex;" class="row">
+        <div class="mb-3 col">
 
             <label for="name">Name<span class="text-danger"> *</span></label>
             <input class="form-control " id="exampleFormControlInput1" type="text" placeholder="Name of role"
@@ -18,7 +18,7 @@
         <p class="text-red-500 text-xs mt-1 text-danger">{{$message}}</p>
         @enderror
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col">
             <label for="slug">Slug <span class="text-danger"> *</span></label>
             <input class="form-control " id="exampleFormControlInput1" type="text" placeholder="Slug of role"
             name='slug' value="{{old('slug')}}">
@@ -27,7 +27,7 @@
         @enderror
         </div>
 
-        <div class="mb-3" >
+        <div class="mb-3 col" >
             <label for="description">Description <span class="text-danger"> *</span></label>
             <input class="form-control " id="exampleFormControlInput1" type="text" placeholder="description"
             name="description" value="{{old('description')}}">
@@ -36,7 +36,7 @@
             <p class="text-red-500 text-xs mt-1 text-danger" text-danger>{{$message}}</p>
             @enderror
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col">
             <label for="level">Level<span class="text-danger"> *</span></label>
             <input class="form-control " id="exampleFormControlInput1" type="text" placeholder="level Integer"
             name="level" value="{{old('level')}}">

@@ -57,7 +57,7 @@
                     <td>{{$user->last_name}}</td>
                     <td>{{$user->email}}</td>
                     <td>@foreach ($user->roles as $item)
-                        <span class="badge badge-pill badge-primary w-50 h-50">{{$item->name}}</span>
+                       <p class="badge badge-pill badge-primary border-radius p-2">{{$item->name}}</p>
                         
                     @endforeach</td>
                     @permission('edit.users')

@@ -50,11 +50,13 @@ function check(id){
 @php
     
 @endphp
-            @if ($user->hasPermission($permission, $all = false))
+@foreach ($rolePermissions as $userp)
+@if ($userp->id===$permission->id)
                 @php
                     $yes=true;
                 @endphp
             @endif
+            @endforeach
         <div style="gap: 5px; ">
             @if($yes)
                 <input class="{{$permission_name[1]}}" checked type="checkbox"  name="permissions[{{$permission->id}}]" value="{{$permission->id}}">

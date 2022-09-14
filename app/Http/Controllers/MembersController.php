@@ -39,7 +39,7 @@ class MembersController extends Controller
         ];
 
         return view('members.index',[
-            'members'=>Members::latest()->filter(request(['search']))->paginate(1),
+            'members'=>Members::latest()->filter(request(['search']))->paginate(10),
         ]);
     }
 

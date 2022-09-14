@@ -7,8 +7,8 @@
 <form method="POST" action="{{route('users.store')}}" class="user">
     @csrf
 
-    <div style="gap:20px; display:flex;">
-        <div class="mb-3">
+    <div style="gap:20px; display:flex;" class="row">
+        <div class="mb-3 col">
 
         <label for="name">Name<span class="text-danger"> *</span></label>
         <input class="form-control "  type="text" placeholder="Name of user"
@@ -17,7 +17,7 @@
         <p class="text-red-500 text-xs mt-1 text-danger">{{$message}}</p>
         @enderror
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col">
         <label for="last_name">last name <span class="text-danger"> *</span></label>
         <input class="form-control "  type="text" placeholder="last name "
         name='last_name' value="{{old('last_name')}}">
@@ -27,7 +27,7 @@
 
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 col">
             <label for="email">Email <span class="text-danger"> *</span></label>
             <input class="form-control "  type="text" placeholder="Email"
             name="email" value="{{old('email')}}">
@@ -36,7 +36,7 @@
             <p class="text-red-500 text-xs mt-1 text-danger" text-danger>{{$message}}</p>
             @enderror
         </div>   
-        <div class="mb-3">
+        <div class="mb-3 col">
             <label for="password">Password<span class="text-danger"> *</span></label>
             <input class="form-control "  type="password" placeholder="Password"
             name="password" value="{{old('password')}}">

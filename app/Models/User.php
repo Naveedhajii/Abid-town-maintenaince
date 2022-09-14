@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Invoice;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use jeremykenedy\LaravelRoles\Models\Permission;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
@@ -74,4 +75,9 @@ class User extends Authenticatable
             ->orWhere('last_name','like', '%'. request('search') . '%');
         }
     }
+    
+    public function permissions(){
+        return $this->belongsToMany(Permission::class);
+    }
+    
 }

@@ -6,8 +6,8 @@
 
 <form method="POST" action="/users/update/{{$user->id}}">
     @csrf
-        <div style="gap:20px; display:flex;">
-            <div class="mb-3">
+        <div style="gap:20px; display:flex;" class="row">
+            <div class="mb-3 col">
 
                 <label for="name">Name<span class="text-danger"> *</span></label>
                 <input class="form-control " type="text" placeholder="Name of user"
@@ -17,7 +17,7 @@
             <p class="text-red-500 text-xs mt-1 text-danger">{{$message}}</p>
             @enderror
             </div>
-            <div class="mb-3">
+            <div class="mb-3 col" >
                 <label for="last_name">last name <span class="text-danger"> *</span></label>
                 <input class="form-control " type="text" placeholder="last_name of user should be unique"
                 name='last_name' value="{{$user->last_name}}">
@@ -27,7 +27,7 @@
 
             </div>
 
-            <div class="mb-3 ">
+            <div class="mb-3 col">
                 <label for="email">Email <span class="text-danger"> *</span></label>
                 <input class="form-control " style="width: 250px" type="text" placeholder="email"
                 name="email" value="{{$user->email}}">
@@ -37,7 +37,7 @@
                 @enderror
                 <br>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 col">
                 <label for="password">password</label>
                 <input class="form-control " type="password" placeholder="password "
                 name="password" value="">
@@ -50,7 +50,7 @@
         
         <x-roles :user=$user :roles=$roles :userRoles=$userRoles/>
     
-    <x-permissions :permissions=$permissions :rolePermissions=$userPermissions/>
+    <x-permissions :user=$user :permissions=$permissions :rolePermissions=$userPermissions/>
 
 
     <button type="submit" class="btn btn-primary btn-icon-split">

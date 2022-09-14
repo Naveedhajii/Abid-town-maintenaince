@@ -9,9 +9,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "barryvdh/laravel-dompdf": "^2.0",
         "devmarketer/easynav": "^1.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "jeremykenedy/laravel-roles": "^8.1",
         "laravel/framework": "^9.0",
         "laravel/legacy-factories": "^1.0",
         "laravel/tinker": "^2.0",

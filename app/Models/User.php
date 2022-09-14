@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Models\Invoice;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    use HasRoleAndPermission;
 
     /**
      * The attributes that are mass assignable.
@@ -51,6 +54,9 @@ class User extends Authenticatable
 
         return "{$this->name} {$this->last_name}";
     }
+    public function invoice(){
+        return $this->hasMany(Invoice::class,'created_by');
+    }
 
     /**
      * Set the user's password.
@@ -61,5 +67,11 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+    public function Scopefilter($query , array $filters){
+        if($filters['search']??false){
+            $query->where('name','like', '%'. request('search') . '%')
+            ->orWhere('last_name','like', '%'. request('search') . '%');
+        }
     }
 }

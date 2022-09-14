@@ -48,8 +48,7 @@
                                         </button>
                                     </div>
 
-                                    <hr>
-
+{{-- 
                                     <div class="form-group">
                                         <button type="button" class="btn btn-github btn-user btn-block">
                                             <i class="fab fa-github fa-fw"></i> {{ __('Login with GitHub') }}
@@ -66,7 +65,7 @@
                                         <button type="button" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> {{ __('Login with Facebook') }}
                                         </button>
-                                    </div>
+                                    </div> --}}
                                 </form>
 
                                 <hr>

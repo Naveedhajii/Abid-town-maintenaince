@@ -64,7 +64,7 @@
                     <td>
                         <form action="/users/edit/{{$user->id}}">
                             @php
-                            $edit='edit'
+                            $edit='Edit'
                             @endphp
                             <x-button :name='$edit'/>
                         </form>

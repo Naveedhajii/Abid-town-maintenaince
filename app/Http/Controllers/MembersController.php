@@ -34,12 +34,16 @@ class MembersController extends Controller
     {
         $users = User::count();
 
+        $showModal=false;
+
+        
         $widget = [
             'users' => $users,
         ];
 
         return view('members.index',[
             'members'=>Members::latest()->filter(request(['search']))->paginate(10),
+            'showModal'=>$showModal,
         ]);
     }
 
@@ -131,4 +135,25 @@ class MembersController extends Controller
         return redirect('/members');
     }
 
+
+    public function AddBalance(Request $request){
+        $formFields=$request->validate([
+            'balance'=>'required|integer',
+        ]);
+        $members=Members::all();
+        
+        foreach ($members as  $member) {
+            $member->balance= (int)$member->balance+(int)$formFields['balance'];
+            $member->update([
+                'id'=>$member->id,
+                'balance'=>$member->balance
+            ]);
+        }
+        return redirect('/members')->with('message','balance has been updated');
+    }
+
+    public function balance(Members $member)
+    {
+        return view('balance.add', ['member'=>$member]);
+    }
 }

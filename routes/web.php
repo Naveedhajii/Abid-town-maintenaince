@@ -72,14 +72,20 @@ Route::post('/users/update/{user}', 'UserController@update')->name('users.update
 
 //invoice generation
 
-Route::get('pdf/{member}/{payment}', array('as'=> 'generate.invoice.pdf', 'uses' => 'PDFController@generateInvoicePDF'));
+Route::get('pdf/{member}/{payment}', array('as'=> 'generate.invoice.pdf', 'uses' => 'PDFController@generateInvoicePDF'))->middleware('permission:create.invoices');;
 
 //Report generation
 
-Route::get('report/{member}', array('as'=> 'generate.invoice.pdf', 'uses' => 'PDFController@generateReportPDF'));
+Route::get('report/{member}', array('as'=> 'generate.invoice.pdf', 'uses' => 'PDFController@generateReportPDF'))->middleware('permission:edit.members');;
 
 //for profile 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
+
+//Balance add
+
+Route::post('/balance/add','MembersController@AddBalance')->name('AddBalance')->middleware('permission:edit.members');
+
+Route::get('/balance','MembersController@balance')->name('ShowBalance')->middleware('permission:edit.members');
 

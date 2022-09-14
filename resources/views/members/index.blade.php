@@ -14,6 +14,16 @@
                 </a>
             </div>
             @endpermission
+            @permission('edit.members')
+            <div>
+                <a href="/balance" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">Add monthly bill</span>
+                </a>
+            </div>
+            @endpermission
     </div>
 </div>
 
@@ -63,7 +73,7 @@
                     <td>
                         <form action="/members/edit/{{$member->id}}">
                             @php
-                            $edit='edit'
+                            $edit='Edit'
                             @endphp
                             <x-button :name='$edit'/>
                         </form>
@@ -71,7 +81,7 @@
                     <td>
                         <form action="/report/{{$member->id}}">
                             @php
-                            $edit='download report'
+                            $edit='Download report'
                             @endphp
                             <x-button :name='$edit'/>
                         </form>
@@ -101,4 +111,31 @@
 
 </div>
 <x-popup />
+@if ($showModal)
+<script type="text/javascript">
+    $(window).on('load', function() {
+        $('#myModal').modal('show');
+    });
+</script>
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>New month has been started please update balance</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div
+@endif
 @endsection

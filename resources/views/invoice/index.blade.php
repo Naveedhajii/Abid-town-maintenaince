@@ -62,7 +62,7 @@
                     <td>
                         <form action="/pdf/{{$payment->member->id}}/{{$payment->id}}">
                             @php
-                            $edit='download'
+                            $edit='Download'
                             @endphp
                             <x-button :name='$edit'/>
                         </form>
